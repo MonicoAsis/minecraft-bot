@@ -4,7 +4,7 @@
   "description": "24/7 AFK Bot for Minecraft",
   "main": "index.js",
   "dependencies": {
-    "mineflayer": "^4.23.0"
+    "mineflayer": "latest"
   },
   "scripts": {
     "start": "node index.js"
