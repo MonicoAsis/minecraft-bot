@@ -3,20 +3,11 @@ const mineflayer = require('mineflayer');
 const botOptions = {
   host: 'us.freegamehost.xyz', 
   port: 27268,                         
-  username: 'AFK_Bot',                 
-  version: '1.21' // Keeps the base packet framework 
-};
-
-// Force bypass the built-in version checking routine entirely
-const mcProtocol = require('minecraft-protocol');
-const oldCreateClient = mcProtocol.createClient;
-mcProtocol.createClient = function (options) {
-  options.checkServerVersion = false; // Disables the error block entirely
-  const client = oldCreateClient(options);
-  client.on('connect', () => {
-    client.protocolVersion = 775; // Forces 26.1.2 packet delivery
-  });
-  return client;
+  username: 'AFK_Bot',
+  // This disables the native version-checking handshake routine directly 
+  skipValidation: true,
+  checkServerVersion: false,
+  version: '26.1.2'
 };
 
 function createBot() {
@@ -25,7 +16,7 @@ function createBot() {
   bot.on('spawn', () => {
     console.log('Bot successfully spawned in the world.');
     
-    // Jump slightly every 30 seconds to stay online
+    // Slight movement tracking loop to keep chunk layers awake
     setInterval(() => {
       bot.setControlState('jump', true);
       setTimeout(() => bot.setControlState('jump', false), 500);
