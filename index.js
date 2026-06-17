@@ -4,7 +4,7 @@ const botOptions = {
   host: 'us.freegamehost.xyz', // Put your FreeGameHost IP/address here
   port: 27268,                         // Put your server port here (usually 25565 or custom)
   username: 'AFK_Bot',                 // The username for your bot
-  version: false                       // Auto-detects the Minecraft server version
+  version: '26.1.2'                       // Auto-detects the Minecraft server version
 };
 
 function createBot() {
